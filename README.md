@@ -17,6 +17,7 @@ Parse Dashboard is a standalone dashboard for managing your Parse apps. You can 
     * [Configuring Basic Authentication](#configuring-basic-authentication)
     * [Separating App Access Based on User Identity](#separating-app-access-based-on-user-identity)
   * [Run with Docker](#run-with-docker)
+    * [On Bluemix](#run-on-bluemix)
 * [Contributing](#contributing)
 
 # Getting Started
@@ -287,6 +288,26 @@ docker run -d -p 80:8080 -v host/path/to/config.json:/src/Parse-Dashboard/parse-
 ```
 
 If you are not familiar with Docker, ``--port 8080`` will be passed in as argument to the entrypoint to form the full command ``npm start -- --port 8080``. The application will start at port 8080 inside the container and port ``8080`` will be mounted to port ``80`` on your host machine.
+
+# Run on Bluemix
+
+* Build tag and push the image to your bluemic org
+* Create a new instance of the uploaded image
+* name the instance & choose size, pick a port
+* select advanced options and add environment variables
+
+| `ENV KEY` | `ENV VALUE` |
+| --- | --- |
+PARSE_DASHBOARD_APP_ID | `the ID you specified when creating your parse server`
+PARSE_DASHBOARD_MASTER_KEY | `the master key specified when creating your parse server`
+PARSE_DASHBOARD_APP_NAME | `a friendly name`
+PARSE_DASHBOARD_SERVER_URL | `the url of the deployed parse server (https://something.mybluemix.net/parse)`
+PARSE_DASHBOARD_USER_ID | `username that will be the administrator`
+PARSE_DASHBOARD_USER_PASSWORD | `password of admin user`
+PARSE_DASHBOARD_ALLOW_INSECURE_HTTP | `true`
+PORT | `80 or specified port when conguring this instance`
+
+
 
 # Contributing
 
