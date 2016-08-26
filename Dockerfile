@@ -7,4 +7,9 @@ RUN cd /src \
  && npm cache clear \
  && rm -rf ~/.npm \
  && rm -rf /var/lib/apt/lists/*
+
+EXPOSE 4040
+
 ENTRYPOINT ["npm", "run", "dashboard"]
+
+
